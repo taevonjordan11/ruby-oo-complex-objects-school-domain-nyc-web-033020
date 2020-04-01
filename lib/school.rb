@@ -1,11 +1,9 @@
-class School
-  def initialize(name)
-    @name = name
-    @roster = {}
-  end
+require 'pry'
 
-  def name
-    @name
+class School
+  def initialize(name_of_school)
+    @name_of_school = name_of_school
+    @roster = {}
   end
 
   def roster
@@ -13,11 +11,22 @@ class School
   end
 
   def add_student(name, grade)
-    @add_student = name
-    @add_student = grade
+    @added_student = name
+    @grade = grade
+    if roster.include?(grade) == false
+      @roster[grade] = []
+    end
+    @roster[grade] << name
   end
 
-  def add_student(name, grade)
-    @add_student
+  def grade(num)
+    @roster[num]
   end
+
+  # def student_sort
+  #   @roster.each do |grade, name|
+  #
+  #
+  # end
+
 end
