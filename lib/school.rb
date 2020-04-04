@@ -1,34 +1,26 @@
-require 'pry'
-
 class School
-  def initialize(name_of_school)
-    @name_of_school = name_of_school
+  attr_accessor :roster, :name
+
+  def initialize(name)
+    @name = name
     @roster = {}
   end
 
-  def roster
-    @roster
-  end
+   def add_student(student_name, grade)
+     roster[grade] ||= []
+     roster[grade] << student_name
+   end
 
-  def add_student(name, grade)
-    @added_student = name
-    @grade = grade
-    if roster.include?(grade) == false
-      @roster[grade] = []
-    end
-    @roster[grade] << name
-  end
-
-  def grade(num)
-    @roster[num]
+  def grade(student_grade)
+      roster[student_grade]
   end
 
   def sort
-    sorted_roster = {}
-    @roster.each do |grade, names|
-      sorted_roster[grade] = names.sort
+    sorted = {}
+    roster.each do |grade, students|
+      sorted[grade] = students.sort
     end
-    sorted_roster
+    sorted
   end
 
 end
